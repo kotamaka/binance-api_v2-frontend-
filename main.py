@@ -33,8 +33,8 @@ def historyPage():
         y='Profit:Q',
         color=alt.condition(
             alt.datum.Profit > 0,
-            alt.value('red'),
-            alt.value('green')
+            alt.value('green'),
+            alt.value('red')
         )
     ).properties(
         width=800,
