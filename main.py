@@ -20,7 +20,8 @@ def historyPage():
             balance -= d['profit']/d['lot']
     else:
         st.error(f'Error code : {r.status_code}', icon="🚨")
-    st.markdown(f'## Balance : {'{:.2f}'.format(balance)}')
+    text = '{:.2f}'.format(balance)
+    st.markdown(f'## Balance : {text}')
     df = pd.DataFrame(data)
     # Chart     
     df['create_date'] = pd.to_datetime(df['create_date'])
