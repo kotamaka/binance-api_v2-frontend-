@@ -70,6 +70,7 @@ def focusPage():
     if 'message' in data:
         st.warning('{}'.format(data['message']), icon="🚨")
     else:
+        df = pd.DataFrame(data)
         df = df.drop(columns=['id'])
         df.columns = ['Symbol','Change(%)']
         st.dataframe(df,width=800,on_select="ignore")
