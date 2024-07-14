@@ -15,9 +15,12 @@ def historyPage():
     r = requests.get(url + endpoint, verify=False)
     if r.status_code == 200:
         data = r.json()
-        balance = 100
-        for d in data:
-            balance -= d['profit']/d['lot']
+        balance = 8.99
+        if 'message' in data:
+            st.error('{}'.format(data['message']), icon="🚨")
+        else:
+            for d in data:
+                balance -= d['profit']/d['lot']
     else:
         st.error(f'Error code : {r.status_code}', icon="🚨")
     
