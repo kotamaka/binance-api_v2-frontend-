@@ -18,9 +18,7 @@ def historyPage():
         st.warning('{}'.format(res['message']), icon="🚨")
     else:
         data = res['data']
-        balance = res['balance']
-        for d in data:
-            balance -= d['profit']/d['lot']
+        balance = float(res['balance'])
         text = '{:.2f}'.format(balance)
         st.markdown(f'## Balance : {text} USD')
         df = pd.DataFrame(data)
