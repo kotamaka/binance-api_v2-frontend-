@@ -14,8 +14,9 @@ def historyPage():
     endpoint = '/api/history'
     r = requests.get(url + endpoint, verify=False)
     if r.status_code == 200:
-        data = r.json()
-        balance = 8.99
+        res = r.json()
+        data = res['data']
+        balance = res['balance']
         if 'message' in data:
             st.error('{}'.format(data['message']), icon="🚨")
         else:
