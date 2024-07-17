@@ -13,23 +13,16 @@ def historyPage():
     
     endpoint = '/api/history'
     r = requests.get(url + endpoint, verify=False)
-    if r.status_code == 200:
-        res = r.json()
+    res = r.json()    
+    if 'message' in res:
+        st.warning('{}'.format(res['message']), icon="🚨")
+    else:
         data = res['data']
         balance = res['balance']
-        if 'message' in data:
-            st.error('{}'.format(data['message']), icon="🚨")
-        else:
-            for d in data:
-                balance -= d['profit']/d['lot']
-    else:
-        st.error(f'Error code : {r.status_code}', icon="🚨")
-    
-    if 'message' in data:
-        st.warning('{}'.format(data['message']), icon="🚨")
-    else:
+        for d in data:
+            balance -= d['profit']/d['lot']
         text = '{:.2f}'.format(balance)
-        st.markdown(f'## Balance : {text}')
+        st.markdown(f'## Balance : {text} USD')
         df = pd.DataFrame(data)
         # Chart     
         df['create_date'] = pd.to_datetime(df['create_date'])
