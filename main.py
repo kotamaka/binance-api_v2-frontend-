@@ -6,7 +6,7 @@ from urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
-url = 'https://3.0.175.195'
+url = 'https://13.250.31.77'
 def historyPage():
     st.title('History')
     st.markdown('')
