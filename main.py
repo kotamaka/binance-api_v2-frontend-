@@ -85,7 +85,7 @@ def ordersPage():
     else:
         df = pd.DataFrame(data)
         df = df.drop(columns=['id'])
-        df.columns = ['Symbol','Type','Entry Price','Stoploss','Takeprofit']
+        df.columns = ['Symbol','Type','Entry Price','Stoploss','Takeprofit','Lot']
         st.dataframe(df,width=800,on_select="ignore")
     
 st.sidebar.title('Aximorph API')
